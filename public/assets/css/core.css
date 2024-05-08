@@ -1,0 +1,12 @@
+body {
+    background-color: rgba(250, 236, 187, .36) !important;
+}
+
+.bg-yellow {
+    background-color: rgba(250, 236, 187, .5) !important;
+}
+
+.bg-red {
+    background-color: #8B0000 !important;
+    color: #fff !important;
+}

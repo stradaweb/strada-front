@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
+	<link rel="stylesheet" href="../assets/css/main.css" />
+	<link rel="stylesheet" href="../assets/css/core.css" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+		integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+		crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<title>La Strada | Menu</title>
+</head>
+
+<body>
+	<div id="headerContainer"></div>
+	<div class="container py-4">
+		<div class="card bg-transparent">
+			<div class="card-header">
+				<div class="d-flex justify-content-between">
+					<h4>Menú</h4>
+					<button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#mdlAddMenu">
+						<i class="fa-solid fa-plus"></i> Nuevo menú
+					</button>
+				</div>
+			</div>
+			<div class="card-body">
+				<div class="table-responsive">
+					<table class="table table-light table-bordered table-striped">
+						<thead>
+							<tr class="bg-red text-center">
+								<th class="bg-red">#</th>
+								<th class="bg-red">Nombre</th>
+								<th class="bg-red">Precio</th>
+								<th class="bg-red">Cantidad</th>
+								<th class="bg-red">Tipo</th>
+								<th class="bg-red">Acciones</th>
+							</tr>
+						</thead>
+						<tbody class="body-data">
+
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Modales -->
+	<div class="modal fade" id="mdlAddMenu" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h1 class="modal-title fs-5" id="exampleModalLabel">Nuevo menú</h1>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<div class="row">
+						<div class="col-md-12 mb-3">
+							<label for="nombreMenu" class="form-label">Nombre</label>
+							<input type="text" class="form-control" id="nombreMenu">
+						</div>
+						<div class="col-md-6 mb-3">
+							<label for="precioMenu" class="form-label">Precio</label>
+							<input type="text" class="form-control" id="precioMenu" onkeydown="numero(event)">
+						</div>
+						<div class="col-md-6 mb-3">
+							<label for="cantidadMenu" class="form-label">Cantidad</label>
+							<input type="text" class="form-control" id="cantidadMenu" onkeydown="numero(event)">
+						</div>
+						<div class="col-md-12 mb-3">
+							<label for="tipoMenu" class="form-label">Tipo</label>
+							<select class="form-select" id="tipoMenu">
+								<option value="" selected>Selecciona el tipo</option>
+								<option value="1">Entrada</option>
+								<option value="2">Segundo</option>
+								<option value="3">Postre</option>
+							</select>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+					<button type="button" class="btn btn-primary js-guardarmenu">Guardar</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal fade" id="mdlUpdateMenu" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h1 class="modal-title fs-5" id="exampleModalLabel">Actualizar menú</h1>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<div class="row">
+						<div class="col-md-12 mb-3">
+							<label for="updatenombreMenu" class="form-label">Nombre</label>
+							<input type="text" class="form-control" id="updatenombreMenu">
+						</div>
+						<div class="col-md-6 mb-3">
+							<label for="updateprecioMenu" class="form-label">Precio</label>
+							<input type="text" class="form-control" id="updateprecioMenu" onkeydown="numero(event)">
+						</div>
+						<div class="col-md-6 mb-3">
+							<label for="updatecantidadMenu" class="form-label">Cantidad</label>
+							<input type="text" class="form-control" id="updatecantidadMenu" onkeydown="numero(event)">
+						</div>
+						<div class="col-md-12 mb-3">
+							<label for="updatetipoMenu" class="form-label">Tipo</label>
+							<select class="form-select" id="updatetipoMenu">
+								<option value="" selected>Selecciona el tipo</option>
+								<option value="1">Entrada</option>
+								<option value="2">Segundo</option>
+								<option value="3">Postre</option>
+							</select>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+					<button type="button" class="btn btn-primary js-actualizarmenu" idmenu>Actualizar</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script src="../assets/js/main.js"></script>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.2/axios.min.js"
+		integrity="sha512-odNmoc1XJy5x1TMVMdC7EMs3IVdItLPlCeL5vSUPN2llYKMJ2eByTTAIiiuqLg+GdNr9hF6z81p27DArRFKT7A=="
+		crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"
+		integrity="sha512-+NqPlbbtM1QqiK8ZAo4Yrj2c4lNQoGv8P79DPtKzj++l5jnN39rHA/xsqn8zE9l0uSoxaCdrOgFs6yjyfbBxSg=="
+		crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+	<script src="../assets/libs/sweetalert2/sweetalert2.all.js"></script>
+	<script src="../assets/js/validaciones.js"></script>
+	<script src="../assets/js/menu.js"></script>
+	<script>
+		$(document).ready(() => {
+			cargarHeader();
+			setTimeout(() => {
+				loadDataUser();
+				loadTable();
+			}, 1000)
+		})
+	</script>
+</body>
+
+</html>
