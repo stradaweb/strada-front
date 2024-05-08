@@ -1,4 +1,4 @@
-const UrlBase = "http://localhost:3000/api/auth";
+const UrlBase = "https://strada-api.vercel.app/api/auth";
 
 $("#btnLogin").click(function () {
   let codigo = $("#coduser").val();

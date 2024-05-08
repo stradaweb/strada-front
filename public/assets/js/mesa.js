@@ -1,4 +1,4 @@
-const UrlBaseMesa = "http://localhost:3000/api/mesa/";
+const UrlBaseMesa = "https://strada-api.vercel.app/api/mesa/";
 
 function loadTableMesa(){
     axios
@@ -25,6 +25,31 @@ function loadTableMesa(){
                 </tr>`;
             }).join('');
             $('.body-data').html(tabla)
+        } else {
+            swal({
+                type: "error",
+                title: "Ocurrio un error con los datos!",
+                showConfirmButton: true,
+                confirmButtonText: "Cerrar",
+            }).then((result) => {});
+        }
+    })
+    .catch((e) => console.log(e))
+}
+
+function loadMesaSeccion(id){
+    axios
+    .get(UrlBaseMesa)
+    .then((res) => {
+        if (res.status == 200) {
+            let data = res.data;
+            data = data.filter((e) => e.id_seccion == id)
+            console.log(data);
+            let tabla = '<option value="" selected>Seleccionar</option>';
+            tabla += data.map((e) => {
+                return `<option value=${e.id_mesa}>${e.numero}</option>`;
+            }).join('');
+            $('.select-data-mesas').html(tabla)
         } else {
             swal({
                 type: "error",

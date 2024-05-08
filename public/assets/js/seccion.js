@@ -1,4 +1,4 @@
-const UrlBaseSeccion = "http://localhost:3000/api/seccion/";
+const UrlBaseSeccion = "https://strada-api.vercel.app/api/seccion/";
 
 function loadTableSeccion(){
     axios
@@ -42,6 +42,7 @@ function loadSelectSeccion(){
     .then((res) => {
         if (res.status == 200) {
             let data = res.data;
+            data = data.filter((e) => e.estado == 1)
             let tabla = '<option value="" selected>Seleccionar</option>';
             tabla += data.map((e) => {
                 return `<option value=${e.id_seccion}>${e.nombre}</option>`;

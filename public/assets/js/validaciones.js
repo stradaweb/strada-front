@@ -94,5 +94,16 @@ function sweetUpdateSuccess(){
 
 function loadDataUser(){
     let data = JSON.parse(localStorage.getItem("usuario"));
+    if(data.rol == 1){
+        $("#comandas").addClass("d-none");
+        $("#num3").addClass("d-none");
+    }else{
+        $("#num1").addClass("d-none");
+        $("#num2").addClass("d-none");
+        $("#num3").addClass("d-none");
+        $("#menu").addClass("d-none");
+        $("#seccion").addClass("d-none");
+        $("#mesas").addClass("d-none");
+    }
     $("#nameUser").html(data.nombre)
 }

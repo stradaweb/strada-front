@@ -1,8 +1,8 @@
-const UrlBase = "http://localhost:3000/api/menu/";
+const UrlBaseMenu = "https://strada-api.vercel.app/api/menu/";
 
 function loadTable(){
     axios
-    .get(UrlBase)
+    .get(UrlBaseMenu)
     .then((res) => {
         if (res.status == 200) {
             let data = res.data;
@@ -37,6 +37,25 @@ function loadTable(){
     .catch((e) => console.log(e))
 }
 
+function loadMenuTable(){
+    axios
+    .get(UrlBaseMenu)
+    .then((res) => {
+        if (res.status == 200) {
+            let data = res.data;
+            data = data.filter((e) => e.estado == 1)
+            let tabla = data.map((e) => {
+                return `<tr class="text-center" data-id=${e.id_menu}>
+                    <td>${e.nombre}</td>
+                    <td>S/. ${e.precio}</td>
+                </tr>`;
+            }).join('');
+            $('#tablaIzquierda tbody').html(tabla)
+        } else {}
+    })
+    .catch((e) => console.log(e))
+}
+
 $('.js-guardarmenu').click(function(){
     let nombre = $('#nombreMenu').val();
     let precio = $('#precioMenu').val();
@@ -51,7 +70,7 @@ $('.js-guardarmenu').click(function(){
             cantidad: cantidad,
             tipo: tipo
         }
-        let url = UrlBase + 'create'
+        let url = UrlBaseMenu + 'create'
         axios.post(url, data)
             .then((res) => {
                 if (res.status == 201) {
@@ -100,7 +119,7 @@ $('.js-actualizarmenu').click(function(){
             tipo: tipo,
             id: id
         }
-        let url = UrlBase + 'update'
+        let url = UrlBaseMenu + 'update'
         axios.post(url, data)
             .then((res) => {
                 if (res.status == 200) {
@@ -133,7 +152,7 @@ function deleteMenu(id){
 		closeOnConfirm: false,
 	}).then((result) => {
 		if (result.value) {
-			let url = UrlBase + "delete/" + id;
+			let url = UrlBaseMenu + "delete/" + id;
 			axios.put(url).then((res) => {
 				if (res.status == 200) {
 					loadTable();
