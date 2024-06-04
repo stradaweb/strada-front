@@ -99,7 +99,7 @@ $("#moverDerecha").on("click", function() {
 });
 
 $("#moverIzquierda").on("click", function() {
-    $("#tablaDerecha tr.selected").remove();
+    $("#tablaDerecha tbody tr").remove();
 });
 
 $("#tablaIzquierda").on("click", "tr", function() {
