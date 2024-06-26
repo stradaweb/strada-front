@@ -53,6 +53,14 @@ app.get('/comandas', checkTokenMiddleware, (req, res) => {
     res.sendFile(path.join(__dirname, 'public/page', 'comanda.html'));
 });
 
+app.get('/comanda', checkTokenMiddleware, (req, res) => {
+    res.sendFile(path.join(__dirname, 'public/page', 'comandas.html'));
+});
+
+app.get('/reporte', checkTokenMiddleware, (req, res) => {
+    res.sendFile(path.join(__dirname, 'public/page', 'reporte.html'));
+});
+
 app.get('/login', tokenMiddleware, (req, res) => {
     res.sendFile(path.join(__dirname, 'public/page', 'login.html'));
 });

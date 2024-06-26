@@ -24,6 +24,7 @@ inputElements.forEach(function(input) {
 function configAxios() {
     try {
         const token = getTokenCookie();
+        // console.log(token);
         axios.interceptors.request.use(
             (config) => {
                 config.headers.authorization =
@@ -97,6 +98,19 @@ function loadDataUser(){
     if(data.rol == 1){
         $("#comandas").addClass("d-none");
         $("#num3").addClass("d-none");
+        $("#comandas2").addClass("d-none");
+        $("#num4").addClass("d-none");
+    }else if(data.rol == 2){
+        $("#num1").addClass("d-none");
+        $("#num2").addClass("d-none");
+        $("#num3").addClass("d-none");
+        $("#menu").addClass("d-none");
+        $("#seccion").addClass("d-none");
+        $("#mesas").addClass("d-none");
+        $("#comandas2").addClass("d-none");
+        $("#num4").addClass("d-none");
+        // $("#reportes").addClass("d-none");
+        // $("#num5").addClass("d-none");
     }else{
         $("#num1").addClass("d-none");
         $("#num2").addClass("d-none");
@@ -104,6 +118,11 @@ function loadDataUser(){
         $("#menu").addClass("d-none");
         $("#seccion").addClass("d-none");
         $("#mesas").addClass("d-none");
+        $("#comandas").addClass("d-none");
+        // $("#reportes").addClass("d-none");
+        $("#num3").addClass("d-none");
+        $("#num4").addClass("d-none");
+        // $("#num5").addClass("d-none");
     }
     $("#nameUser").html(data.nombre)
 }

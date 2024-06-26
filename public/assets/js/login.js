@@ -1,4 +1,4 @@
-const UrlBase = "https://strada-api.vercel.app/api/auth";
+const UrlBaseLogin = UrlBase + "auth";
 
 $("#btnLogin").click(function () {
   let codigo = $("#coduser").val();
@@ -6,7 +6,7 @@ $("#btnLogin").click(function () {
 
   if (codigo != "" && pass != "") {
     var data = { codigo: codigo, pass: pass };
-    axios.post(UrlBase, data).then((res) => {
+    axios.post(UrlBaseLogin, data).then((res) => {
       if (res.status == 200) {
         var data = res.data[0];
         setCookie("token", data.token, 7);

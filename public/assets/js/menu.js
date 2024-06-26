@@ -1,4 +1,4 @@
-const UrlBaseMenu = "https://strada-api.vercel.app/api/menu/";
+const UrlBaseMenu = UrlBase + "menu/";
 
 function loadTable(){
     axios

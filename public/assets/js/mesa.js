@@ -1,4 +1,4 @@
-const UrlBaseMesa = "https://strada-api.vercel.app/api/mesa/";
+const UrlBaseMesa = UrlBase + "mesa/";
 
 function loadTableMesa(){
     axios
@@ -44,7 +44,6 @@ function loadMesaSeccion(id){
         if (res.status == 200) {
             let data = res.data;
             data = data.filter((e) => e.id_seccion == id)
-            console.log(data);
             let tabla = '<option value="" selected>Seleccionar</option>';
             tabla += data.map((e) => {
                 return `<option value=${e.id_mesa}>${e.numero}</option>`;

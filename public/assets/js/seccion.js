@@ -1,4 +1,4 @@
-const UrlBaseSeccion = "https://strada-api.vercel.app/api/seccion/";
+const UrlBaseSeccion = UrlBase + "seccion/";
 
 function loadTableSeccion(){
     axios
